@@ -1,0 +1,1787 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boutique 1 — Vente en ligne · Mode & Accessoires</title>
+    <meta name="description" content="Boutique 1 — vêtements et accessoires contemporains. Paiement en FCFA, livraison rapide au Sénégal et en Afrique de l'Ouest." />
+    <meta property="og:title" content="Boutique 1 — Vente en ligne" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: { extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }}
+      }
+    </script>
+
+    <style>
+      body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+      h1, h2, h3, h4, .font-display { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; }
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-thumb { background: rgba(150,150,150,.25); border-radius: 9999px; }
+      .img-drop.dragover { border-color: #111; background: rgba(0,0,0,.03); }
+
+      /* LOGO BOUTIQUE 1 */
+      .brand-logo { display: inline-flex; align-items: center; gap: .4rem; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.035em; line-height: 1; text-decoration: none; color: inherit; user-select: none; -webkit-tap-highlight-color: transparent; transition: transform .35s cubic-bezier(.2,.9,.3,1.3); }
+      .brand-logo:active { transform: scale(.96); }
+      .brand-logo:hover { transform: translateY(-1px); }
+      .brand-text { background: linear-gradient(120deg, #1c1917 0%, #1c1917 35%, #a8a29e 60%, #1c1917 90%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position .8s ease; }
+      .dark .brand-text { background: linear-gradient(120deg, #fafaf9 0%, #fafaf9 35%, #78716c 60%, #fafaf9 90%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .brand-logo:hover .brand-text { background-position: 100% 0; }
+      .brand-num { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 1.65rem; height: 1.65rem; padding: 0 .35rem; border-radius: .55rem; background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #0c0a09 100%); color: #fafaf9; font-weight: 900; font-size: .9rem; letter-spacing: -0.02em; overflow: hidden; box-shadow: 0 6px 16px -4px rgba(0,0,0,.45), 0 2px 4px -2px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.4); }
+      .dark .brand-num { background: linear-gradient(135deg, #fafaf9 0%, #e7e5e4 50%, #d6d3d1 100%); color: #0c0a09; box-shadow: 0 6px 16px -4px rgba(255,255,255,.15), 0 2px 4px -2px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(0,0,0,.1); }
+      .brand-num::before { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.35) 45%, rgba(255,255,255,.6) 50%, rgba(255,255,255,.35) 55%, transparent 75%); transform: translateX(-120%); transition: transform .75s cubic-bezier(.3,.8,.3,1); pointer-events: none; }
+      .brand-logo:hover .brand-num::before { transform: translateX(120%); }
+      @keyframes brandPulse {
+        0%, 100% { box-shadow: 0 6px 16px -4px rgba(0,0,0,.45), 0 2px 4px -2px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.18), 0 0 0 0 rgba(28,25,23,.4); }
+        50%      { box-shadow: 0 6px 16px -4px rgba(0,0,0,.45), 0 2px 4px -2px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.18), 0 0 0 6px rgba(28,25,23,0); }
+      }
+      .brand-num { animation: brandPulse 3.2s ease-in-out infinite; }
+
+      @keyframes modalIn { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .modal-anim { animation: modalIn .22s cubic-bezier(.2,.9,.3,1.2); }
+
+      /* Bandeau stats */
+      .kpi-card { transition: transform .2s ease, box-shadow .2s ease; }
+      .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px rgba(0,0,0,.15); }
+    </style>
+  </head>
+
+  <body class="bg-[#FAF9F6] text-stone-900 antialiased selection:bg-stone-900 selection:text-white dark:bg-[#0C0C0D] dark:text-stone-100 min-h-screen flex flex-col transition-colors">
+
+    <!-- EN-TÊTE -->
+    <header class="sticky top-0 z-40 bg-[#FAF9F6]/90 dark:bg-[#0C0C0D]/90 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="toggleMainMenu()" class="p-2 text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white rounded-lg" title="Menu principal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+
+          <button id="back-btn" onclick="handleBack()" class="hidden p-2 text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white rounded-lg" title="Retour">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+
+          <a href="#catalog" onclick="showCatalog()" id="brand-logo" class="brand-logo ml-1" title="Boutique 1">
+            <span class="brand-text">Boutique</span>
+            <span class="brand-num">1</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-300">
+          <button onclick="filterCategory('Tous')" class="hover:text-stone-950 dark:hover:text-white">Tous</button>
+          <button onclick="filterCategory('Hauts')" class="hover:text-stone-950 dark:hover:text-white">Hauts</button>
+          <button onclick="filterCategory('Bas')" class="hover:text-stone-950 dark:hover:text-white">Bas</button>
+          <button onclick="filterCategory('Vestes')" class="hover:text-stone-950 dark:hover:text-white">Vestes</button>
+        </nav>
+
+        <div class="flex items-center gap-2 md:gap-3 shrink-0">
+          <button id="conn-badge" class="hidden p-2 rounded-lg text-[10px] font-mono"></button>
+
+          <button onclick="toggleDarkMode()" class="p-2 text-stone-600 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100 rounded-lg" title="Mode sombre / clair">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-950 rounded-xl shadow-sm flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span id="cart-counter" class="text-xs font-bold font-mono tabular-nums">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MENU LATÉRAL -->
+    <div id="main-menu-overlay" onclick="toggleMainMenu()" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden"></div>
+    <aside id="main-menu" class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full transition-transform duration-300 flex flex-col">
+      <div class="flex items-center justify-between p-4 border-b border-stone-200 dark:border-stone-800">
+        <span class="brand-logo" style="font-size:1.15rem">
+          <span class="brand-text">Boutique</span>
+          <span class="brand-num">1</span>
+        </span>
+        <button onclick="toggleMainMenu()" class="p-2 text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 rounded-lg" title="Fermer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <p class="px-3 pt-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-stone-400">Boutique</p>
+
+        <button onclick="menuGo(showCatalog); filterCategory('Tous')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10"/></svg>
+          Tous les articles
+        </button>
+
+        <button onclick="menuGo(showCatalog); filterCategory('Hauts')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l3-3h6l3 3v15H6V6zm3 0l1.5 2h3L15 6"/></svg>
+          Hauts
+        </button>
+
+        <button onclick="menuGo(showCatalog); filterCategory('Bas')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l1 9-1 9h-3v-9h-2v9H8l-1-9 1-9z"/></svg>
+          Bas
+        </button>
+
+        <button onclick="menuGo(showCatalog); filterCategory('Vestes')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-4 2-4 3v9h4v-6h8v6h4v-9l-4-3-4-2zm0 0v6"/></svg>
+          Vestes
+        </button>
+
+        <p class="px-3 pt-5 pb-1 text-[10px] font-bold uppercase tracking-wider text-stone-400">Nous contacter</p>
+        <div id="menu-contacts" class="space-y-1"></div>
+
+        <p class="px-3 pt-5 pb-1 text-[10px] font-bold uppercase tracking-wider text-stone-400">Espace pro</p>
+        <button onclick="menuGo(openAdminModal)" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Espace administrateur
+        </button>
+
+        <button onclick="menuGo(toggleDarkMode)" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+          <svg class="w-5 h-5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Mode sombre / clair
+        </button>
+      </nav>
+
+      <div class="p-4 border-t border-stone-200 dark:border-stone-800 text-[10px] text-stone-400 text-center">
+        © 2026 Boutique 1
+      </div>
+    </aside>
+
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full">
+
+      <!-- VUE 1 : CATALOGUE -->
+      <section id="view-catalog" class="space-y-12 pb-16">
+        <div class="relative w-full rounded-3xl overflow-hidden bg-stone-900 text-stone-100 shadow-xl aspect-[4/5] sm:aspect-[16/9] md:aspect-[21/9]">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=80" alt="Boutique 1" class="w-full h-full object-cover brightness-90" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10 lg:p-14">
+            <div class="max-w-2xl space-y-3">
+              <span class="text-[11px] uppercase tracking-widest font-semibold text-stone-300">Boutique en ligne · Livraison Dakar / Abidjan / Paris</span>
+              <h1 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">Mode, Prêt-à-porter &amp; Accessoires</h1>
+              <p class="text-xs sm:text-sm text-stone-300 font-light max-w-xl">Commandez en ligne en toute confiance — paiement en FCFA, livraison rapide, retours gratuits sous 14 jours.</p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur text-white text-[10px] font-semibold uppercase tracking-wider rounded-full border border-white/20 flex items-center gap-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                  Paiement FCFA
+                </span>
+                <span class="px-3 py-1 bg-white/10 backdrop-blur text-white text-[10px] font-semibold uppercase tracking-wider rounded-full border border-white/20 flex items-center gap-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                  Livraison 48h
+                </span>
+                <span class="px-3 py-1 bg-white/10 backdrop-blur text-white text-[10px] font-semibold uppercase tracking-wider rounded-full border border-white/20 flex items-center gap-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                  Paiement à la livraison
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-1.5 p-1 bg-stone-200/60 dark:bg-stone-900 rounded-xl overflow-x-auto border border-stone-200 dark:border-stone-800">
+            <button onclick="filterCategory('Tous')" id="cat-Tous" class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 shadow-sm">Tous</button>
+            <button onclick="filterCategory('Hauts')" id="cat-Hauts" class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg text-stone-600 dark:text-stone-400">Hauts</button>
+            <button onclick="filterCategory('Bas')" id="cat-Bas" class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg text-stone-600 dark:text-stone-400">Bas</button>
+            <button onclick="filterCategory('Vestes')" id="cat-Vestes" class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg text-stone-600 dark:text-stone-400">Vestes</button>
+          </div>
+          <div class="relative w-full md:w-72">
+            <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Rechercher un article..." class="w-full pl-4 pr-4 py-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-stone-500" />
+          </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div class="col-span-full text-center text-xs text-stone-400 py-10">Chargement de la boutique…</div>
+        </div>
+      </section>
+
+      <!-- VUE 2 : DÉTAIL PRODUIT -->
+      <section id="view-detail" class="hidden space-y-16 pb-20">
+        <button onclick="showCatalog()" class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Retour à la boutique</span>
+        </button>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-7 space-y-4">
+            <div id="media-tabs" class="flex items-center gap-1.5 p-1 bg-stone-100 dark:bg-stone-900 rounded-xl w-fit border border-stone-200/80 dark:border-stone-800">
+              <button onclick="setMediaTab('photo')" id="btn-tab-photo" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white dark:bg-stone-800 shadow-sm">Photos</button>
+              <button onclick="setMediaTab('video')" id="btn-tab-video" class="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500">Vidéo</button>
+            </div>
+            <div id="pdp-photo-container" class="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/60 dark:border-stone-800/80">
+              <img id="pdp-main-image" src="" alt="" class="w-full h-full object-cover" />
+            </div>
+            <div id="pdp-video-container" class="hidden relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-black">
+              <video id="pdp-video-player" src="" controls class="w-full h-full object-cover"></video>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+            <div class="space-y-2 border-b border-stone-200/80 dark:border-stone-800 pb-5">
+              <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-stone-500 uppercase">
+                <span id="pdp-category"></span><span>·</span><span id="pdp-material-header"></span>
+              </div>
+              <h1 id="pdp-title" class="text-xl sm:text-2xl font-display font-bold leading-snug"></h1>
+              <div class="flex items-center gap-1.5 text-xs font-semibold">
+                <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+                <span id="pdp-rating-avg" class="font-mono">—</span>
+                <span id="pdp-rating-count" class="text-stone-500 font-normal">(0 avis)</span>
+              </div>
+              <div class="pt-2">
+                <div class="flex items-baseline gap-3">
+                  <span id="pdp-price-fcfa" class="text-2xl sm:text-3xl font-bold font-mono tabular-nums"></span>
+                  <span id="pdp-compare-fcfa" class="text-sm text-stone-400 line-through font-mono tabular-nums hidden"></span>
+                </div>
+              </div>
+            </div>
+
+            <p id="pdp-desc" class="text-xs leading-relaxed text-stone-600 dark:text-stone-400 font-light"></p>
+
+            <div class="space-y-2.5">
+              <span class="block text-xs font-semibold uppercase tracking-wider">Sélectionnez la taille :</span>
+              <div id="pdp-sizes" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div class="space-y-2.5">
+              <span class="block text-xs font-semibold uppercase tracking-wider">Coloris :</span>
+              <div id="pdp-colors" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <div class="flex items-center border border-stone-200 dark:border-stone-800 rounded-xl overflow-hidden bg-white dark:bg-stone-900 h-12">
+                <button onclick="decrementQty()" class="px-3 text-stone-500 hover:text-stone-950">-</button>
+                <span id="pdp-qty" class="w-8 text-center text-xs font-mono font-bold">1</span>
+                <button onclick="incrementQty()" class="px-3 text-stone-500 hover:text-stone-950">+</button>
+              </div>
+              <button onclick="addToCartFromPDP()" class="flex-1 h-12 px-6 bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-950 text-xs font-bold uppercase tracking-wider rounded-xl shadow-md flex items-center justify-center gap-2">
+                <span>Ajouter au panier</span>
+                <span id="pdp-btn-total" class="font-mono font-normal"></span>
+              </button>
+            </div>
+            <p id="pdp-stock-status" class="text-xs font-medium text-emerald-600 dark:text-emerald-400"></p>
+
+            <div id="pdp-admin-actions" class="hidden pt-4 border-t border-stone-200 dark:border-stone-800 gap-2">
+              <button onclick="openEditProduct(activeProduct && activeProduct.id)" class="flex-1 py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold uppercase">Modifier</button>
+              <button onclick="deleteProduct(activeProduct && activeProduct.id)" class="flex-1 py-3 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-xl text-xs font-bold uppercase">Supprimer</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVIS -->
+        <div class="pt-14 border-t border-stone-200/80 dark:border-stone-800 space-y-10">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-display font-bold">Avis &amp; Évaluations Clients</h2>
+              <p class="text-xs text-stone-500">Partages d'expérience vérifiés.</p>
+            </div>
+            <button onclick="toggleReviewForm()" class="px-4 py-2 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 text-xs font-semibold rounded-xl">Rédiger un avis</button>
+          </div>
+
+          <form id="review-form" onsubmit="submitReview(event)" class="hidden p-6 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h3 class="font-semibold text-sm">Donnez votre avis</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-medium mb-1">Nom *</label>
+                <input type="text" id="rev-author" required placeholder="Amadou Diallo" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Note *</label>
+                <select id="rev-rating" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950">
+                  <option value="5">5/5 — Excellent</option>
+                  <option value="4">4/5 — Très bien</option>
+                  <option value="3">3/5 — Correct</option>
+                  <option value="2">2/5 — Moyen</option>
+                  <option value="1">1/5 — Décevant</option>
+                </select>
+              </div>
+            </div>
+            <input type="text" id="rev-title" placeholder="Titre (facultatif)" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+            <textarea id="rev-comment" required rows="3" placeholder="Votre commentaire…" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950"></textarea>
+            <div class="flex justify-end gap-2">
+              <button type="button" onclick="toggleReviewForm()" class="px-4 py-2 text-stone-500">Annuler</button>
+              <button type="submit" class="px-5 py-2 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 rounded-xl font-semibold">Publier</button>
+            </div>
+          </form>
+
+          <div id="pdp-reviews-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+      </section>
+
+      <!-- VUE 3 : CHECKOUT -->
+      <section id="view-checkout" class="hidden max-w-4xl mx-auto pb-20 space-y-8">
+        <button onclick="showCatalog()" class="text-xs uppercase font-semibold text-stone-500 hover:underline">← Continuer mes achats</button>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <form onsubmit="handleOrderSubmit(event)" class="lg:col-span-7 bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h2 class="font-display font-bold text-base uppercase">Informations de livraison</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="text" id="chk-name" required placeholder="Nom complet *" class="px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              <input type="email" id="chk-email" required placeholder="Email *" class="px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+            </div>
+
+            <div class="relative">
+              <input type="tel" id="chk-phone" required placeholder="Téléphone (Wave / OM) *"
+                     class="w-full px-3 py-2.5 pr-14 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400">TEL</span>
+            </div>
+
+            <input type="text" id="chk-address" required placeholder="Adresse *" class="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" id="chk-postal" required placeholder="Code postal" class="px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              <input type="text" id="chk-city" required placeholder="Ville" class="px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+            </div>
+
+            <div class="pt-4 border-t border-stone-200 dark:border-stone-800 space-y-3">
+              <h3 class="font-bold text-sm uppercase">Moyen de paiement</h3>
+              <div class="grid grid-cols-2 gap-2" id="payment-methods">
+                <label class="pay-opt cursor-pointer flex items-center gap-2 p-3 rounded-xl border-2 border-stone-200 dark:border-stone-800 hover:border-stone-400">
+                  <input type="radio" name="pay" value="wave" class="accent-emerald-600" /><span class="text-xs font-bold">Wave</span>
+                </label>
+                <label class="pay-opt cursor-pointer flex items-center gap-2 p-3 rounded-xl border-2 border-stone-200 dark:border-stone-800 hover:border-stone-400">
+                  <input type="radio" name="pay" value="om" class="accent-orange-500" /><span class="text-xs font-bold">Orange Money</span>
+                </label>
+                <label class="pay-opt cursor-pointer flex items-center gap-2 p-3 rounded-xl border-2 border-stone-200 dark:border-stone-800 hover:border-stone-400">
+                  <input type="radio" name="pay" value="free" class="accent-red-500" /><span class="text-xs font-bold">Free Money</span>
+                </label>
+                <label class="pay-opt cursor-pointer flex items-center gap-2 p-3 rounded-xl border-2 border-stone-200 dark:border-stone-800 hover:border-stone-400">
+                  <input type="radio" name="pay" value="cod" class="accent-stone-600" checked /><span class="text-xs font-bold">À la livraison</span>
+                </label>
+              </div>
+              <div id="pay-instructions" class="hidden text-xs p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-100"></div>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 font-bold uppercase rounded-xl mt-4">Valider la commande</button>
+          </form>
+
+          <div class="lg:col-span-5 bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h3 class="font-bold text-sm uppercase">Total du panier</h3>
+            <div id="checkout-items" class="divide-y divide-stone-100 dark:divide-stone-800 max-h-60 overflow-y-auto"></div>
+            <div class="pt-4 border-t border-stone-200 dark:border-stone-800 flex justify-between items-baseline text-sm font-bold">
+              <span>Total TTC :</span>
+              <span id="checkout-total-fcfa" class="font-mono text-base"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIRMATION -->
+      <section id="view-confirmation" class="hidden max-w-lg mx-auto text-center py-16 space-y-6">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h2 class="text-2xl font-display font-bold">Commande validée !</h2>
+        <p class="text-xs text-stone-500">Merci pour votre confiance. Vous recevrez un email de confirmation.</p>
+        <button onclick="showCatalog()" class="px-6 py-3 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 text-xs font-semibold rounded-xl uppercase">Retour à la boutique</button>
+      </section>
+
+      <!-- VUE 4 : ADMIN -->
+      <section id="view-admin" class="hidden space-y-8 pb-20">
+        <div class="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-stone-800">
+          <div>
+            <span class="text-[11px] font-mono uppercase text-stone-500">Mode Administrateur</span>
+            <h1 class="text-2xl font-display font-bold">Gestion de la Boutique</h1>
+          </div>
+          <button onclick="logoutAdmin()" class="px-4 py-2 bg-rose-50 text-rose-600 rounded-xl text-xs font-semibold">Quitter Admin</button>
+        </div>
+
+        <div class="flex items-center gap-1.5 p-1 bg-stone-200/60 dark:bg-stone-900 rounded-xl w-fit border border-stone-200 dark:border-stone-800 overflow-x-auto">
+          <button onclick="showAdminTab('stats')" id="admin-tab-stats" class="admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap">📊 Statistiques</button>
+          <button onclick="showAdminTab('publish')" id="admin-tab-publish" class="admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap">Publier</button>
+          <button onclick="showAdminTab('edit')" id="admin-tab-edit" class="admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap">Modifier</button>
+          <button onclick="showAdminTab('delete')" id="admin-tab-delete" class="admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap">Supprimer</button>
+          <button onclick="showAdminTab('contacts')" id="admin-tab-contacts" class="admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap">Contacts &amp; Réseaux</button>
+        </div>
+
+        <!-- ▼▼▼ ONGLET STATISTIQUES ▼▼▼ -->
+        <div id="admin-panel-stats" class="hidden space-y-6">
+
+          <div class="flex items-center gap-1.5 p-1 bg-stone-200/60 dark:bg-stone-900 rounded-xl w-fit border border-stone-200 dark:border-stone-800">
+            <button onclick="renderStats('day')"   id="stats-tab-day"   class="stats-tab px-4 py-2 text-xs font-semibold rounded-lg">Aujourd'hui</button>
+            <button onclick="renderStats('week')"  id="stats-tab-week"  class="stats-tab px-4 py-2 text-xs font-semibold rounded-lg">7 jours</button>
+            <button onclick="renderStats('month')" id="stats-tab-month" class="stats-tab px-4 py-2 text-xs font-semibold rounded-lg">30 jours</button>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="kpi-card bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                Visites produits
+              </div>
+              <p id="stat-views" class="text-2xl font-display font-extrabold font-mono tabular-nums mt-2">0</p>
+            </div>
+            <div class="kpi-card bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                Commandes
+              </div>
+              <p id="stat-orders" class="text-2xl font-display font-extrabold font-mono tabular-nums mt-2">0</p>
+            </div>
+            <div class="kpi-card bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Chiffre d'affaires
+              </div>
+              <p id="stat-revenue" class="text-2xl font-display font-extrabold font-mono tabular-nums mt-2">0 FCFA</p>
+            </div>
+            <div class="kpi-card bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-6"/></svg>
+                Panier moyen
+              </div>
+              <p id="stat-avg" class="text-2xl font-display font-extrabold font-mono tabular-nums mt-2">0 FCFA</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <h3 class="font-bold text-sm uppercase flex items-center gap-2 mb-4">
+                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                Top 5 produits visités
+              </h3>
+              <div id="top-views" class="space-y-3"></div>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200 dark:border-stone-800">
+              <h3 class="font-bold text-sm uppercase flex items-center gap-2 mb-4">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                Top 5 produits achetés
+              </h3>
+              <div id="top-sales" class="space-y-3"></div>
+            </div>
+          </div>
+
+          <!-- Historique 7 derniers jours -->
+          <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200 dark:border-stone-800">
+            <h3 class="font-bold text-sm uppercase mb-4">Historique 7 derniers jours</h3>
+            <div id="chart-7days" class="space-y-2"></div>
+          </div>
+
+        </div>
+
+        <!-- ONGLET PUBLIER -->
+        <div id="admin-panel-publish" class="hidden space-y-6">
+          <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h2 class="font-bold text-sm uppercase">Nouvel article</h2>
+            <form onsubmit="handleAdminAddProduct(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="text" id="adm-name" required placeholder="Nom du modèle" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+                <div class="relative">
+                  <input type="number" id="adm-price" required min="0" step="500" placeholder="Prix en FCFA" class="w-full px-3 py-2 pr-14 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400">FCFA</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="relative">
+                  <input type="number" id="adm-compare" min="0" step="500" placeholder="Prix barré (optionnel)" class="w-full px-3 py-2 pr-14 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400">FCFA</span>
+                </div>
+                <select id="adm-cat" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950">
+                  <option value="Hauts">Hauts</option>
+                  <option value="Bas">Bas</option>
+                  <option value="Vestes">Vestes</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="number" id="adm-stock" value="15" placeholder="Stock" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+                <input type="text" id="adm-material" placeholder="Composition" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              </div>
+              <div>
+                <label class="block font-semibold mb-1 text-[11px] uppercase tracking-wider">Image du produit *</label>
+                <div id="adm-img-drop" class="img-drop cursor-pointer border-2 border-dashed border-stone-300 dark:border-stone-700 rounded-2xl p-4 flex items-center gap-4 bg-stone-50 dark:bg-stone-950 hover:border-stone-500 transition-colors">
+                  <div id="adm-img-preview" class="w-20 h-20 rounded-xl bg-stone-200 dark:bg-stone-800 overflow-hidden flex items-center justify-center text-stone-400 text-[10px] shrink-0">Aperçu</div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-xs font-semibold">Clique ou dépose une image</p>
+                    <div id="adm-upload-status" class="text-[10px] mt-1 font-mono hidden"></div>
+                  </div>
+                  <input type="file" id="adm-img-file" accept="image/*" class="hidden" />
+                  <input type="url" id="adm-img-url" placeholder="…ou URL https://" class="hidden" />
+                </div>
+                <button type="button" onclick="toggleImageUrlInput()" class="text-[10px] text-stone-500 underline mt-1">Utiliser une URL</button>
+              </div>
+              <input type="url" id="adm-video" placeholder="URL vidéo MP4 (optionnel)" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              <textarea id="adm-desc" rows="2" placeholder="Description…" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950"></textarea>
+              <button type="submit" id="adm-submit" class="px-6 py-2.5 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 rounded-xl font-bold uppercase">Publier l'article</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ONGLET MODIFIER -->
+        <div id="admin-panel-edit" class="hidden space-y-6">
+          <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h2 class="font-bold text-sm uppercase">Modifier un article</h2>
+            <select id="edit-select" onchange="loadProductForEdit(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-semibold">
+              <option value="">— Choisir un article —</option>
+            </select>
+            <form id="edit-form" onsubmit="handleEditProduct(event)" class="hidden space-y-4 pt-4 border-t border-stone-200 dark:border-stone-800">
+              <input type="hidden" id="edit-id" />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="text" id="edit-name" required placeholder="Nom" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+                <div class="relative">
+                  <input type="number" id="edit-price" required min="0" step="500" placeholder="Prix FCFA" class="w-full px-3 py-2 pr-14 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400">FCFA</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="relative">
+                  <input type="number" id="edit-compare" min="0" step="500" placeholder="Prix barré" class="w-full px-3 py-2 pr-14 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400">FCFA</span>
+                </div>
+                <select id="edit-cat" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950">
+                  <option value="Hauts">Hauts</option>
+                  <option value="Bas">Bas</option>
+                  <option value="Vestes">Vestes</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="number" id="edit-stock" placeholder="Stock" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+                <input type="text" id="edit-material" placeholder="Composition" class="px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              </div>
+              <div>
+                <label class="block font-semibold mb-1 text-[11px] uppercase tracking-wider">Nouvelle image (optionnel)</label>
+                <div id="edit-img-drop" class="img-drop cursor-pointer border-2 border-dashed border-stone-300 dark:border-stone-700 rounded-2xl p-4 flex items-center gap-4 bg-stone-50 dark:bg-stone-950 hover:border-stone-500 transition-colors">
+                  <div id="edit-img-preview" class="w-20 h-20 rounded-xl bg-stone-200 dark:bg-stone-800 overflow-hidden flex items-center justify-center text-stone-400 text-[10px] shrink-0">Aperçu</div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-xs font-semibold">Remplacer l'image</p>
+                    <div id="edit-upload-status" class="text-[10px] mt-1 font-mono hidden"></div>
+                  </div>
+                  <input type="file" id="edit-img-file" accept="image/*" class="hidden" />
+                </div>
+              </div>
+              <input type="url" id="edit-video" placeholder="URL vidéo MP4" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              <textarea id="edit-desc" rows="2" placeholder="Description…" class="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950"></textarea>
+              <div class="flex gap-2">
+                <button type="submit" id="edit-submit" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold uppercase">Enregistrer</button>
+                <button type="button" onclick="resetEditForm()" class="px-4 py-2.5 bg-stone-100 dark:bg-stone-800 rounded-xl font-semibold">Annuler</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ONGLET SUPPRIMER -->
+        <div id="admin-panel-delete" class="hidden space-y-6">
+          <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <h2 class="font-bold text-sm uppercase">Supprimer un article</h2>
+            <p class="text-stone-500">Chaque suppression demandera une confirmation.</p>
+            <div id="admin-delete-list" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <!-- ONGLET CONTACTS -->
+        <div id="admin-panel-contacts" class="hidden space-y-6">
+          <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4 text-xs">
+            <div>
+              <h2 class="font-bold text-sm uppercase">Réseaux sociaux &amp; Contact</h2>
+              <p class="text-stone-500 mt-1">Ces informations s'affichent automatiquement dans le menu principal, sous « Nous contacter ».</p>
+            </div>
+            <form onsubmit="handleSaveContacts(event)" class="space-y-4">
+              <div class="p-4 rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-emerald-600 dark:text-emerald-400" id="ic-wa"></span>
+                  <label class="font-bold text-[11px] uppercase tracking-wider text-emerald-800 dark:text-emerald-300">WhatsApp (boutique)</label>
+                </div>
+                <input type="tel" id="cfg-whatsapp" placeholder="+221 77 123 45 67" class="w-full px-3 py-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-stone-950 font-mono" />
+                <p class="text-[10px] text-stone-500">Ce numéro s'affiche dans le panier pour le paiement Wave / OM.</p>
+              </div>
+              <div class="p-4 rounded-xl border-2 border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-950/20 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-stone-800 dark:text-stone-200" id="ic-tt"></span>
+                  <label class="font-bold text-[11px] uppercase tracking-wider">TikTok</label>
+                </div>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs">@</span>
+                  <input type="text" id="cfg-tiktok" placeholder="boutique1" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 font-mono" />
+                </div>
+              </div>
+              <div class="p-4 rounded-xl border-2 border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-950/20 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-stone-800 dark:text-stone-200" id="ic-ig"></span>
+                  <label class="font-bold text-[11px] uppercase tracking-wider">Instagram</label>
+                </div>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs">@</span>
+                  <input type="text" id="cfg-instagram" placeholder="boutique1" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 font-mono" />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold mb-1 text-[11px] uppercase tracking-wider">Email</label>
+                <input type="email" id="cfg-email" placeholder="contact@boutique1.sn" class="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-mono" />
+              </div>
+              <div>
+                <label class="block font-semibold mb-1 text-[11px] uppercase tracking-wider">Adresse (optionnel)</label>
+                <input type="text" id="cfg-address" placeholder="Dakar, Plateau, Sénégal" class="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950" />
+              </div>
+              <div class="flex items-center gap-2 pt-2">
+                <button type="submit" id="cfg-save-btn" class="px-6 py-2.5 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 rounded-xl font-bold uppercase">Enregistrer</button>
+              </div>
+              <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-2">Aperçu dans le menu :</p>
+                <div id="contacts-preview" class="space-y-1"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- PANIER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm hidden">
+      <div class="w-full max-w-md h-full bg-[#FAF9F6] dark:bg-stone-900 p-6 flex flex-col justify-between shadow-2xl">
+        <div class="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-stone-800">
+          <h2 class="font-display font-bold text-base">Mon panier</h2>
+          <button onclick="toggleCartDrawer()" class="p-1 text-stone-400 hover:text-stone-900">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto py-4 space-y-4"></div>
+
+        <div class="pt-4 border-t border-stone-200 dark:border-stone-800 space-y-3">
+          <div class="flex items-center gap-3 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl">
+            <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-[10px] uppercase tracking-wider font-bold text-emerald-700 dark:text-emerald-400">Paiement mobile</p>
+              <p id="cart-pay-number" class="text-sm font-mono font-bold text-emerald-900 dark:text-emerald-100">+221 77 123 45 67</p>
+            </div>
+            <a id="cart-pay-wa" href="https://wa.me/221771234567" target="_blank" rel="noopener"
+               class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase rounded-lg shrink-0">WhatsApp</a>
+          </div>
+
+          <div>
+            <label for="cart-customer-phone" class="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Votre numéro (Wave / OM)</label>
+            <input type="tel" id="cart-customer-phone" inputmode="tel" placeholder="+221 77 123 45 67"
+                   class="w-full px-3 py-2.5 bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500" />
+          </div>
+
+          <div class="flex justify-between items-baseline pt-1">
+            <span class="text-xs text-stone-500">Total :</span>
+            <span id="cart-total-fcfa" class="text-lg font-bold font-mono">0 FCFA</span>
+          </div>
+
+          <button onclick="openCheckout()" class="w-full py-3 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 text-xs font-bold uppercase rounded-xl">Passer la commande</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALE CONFIRMATION -->
+    <div id="confirm-modal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div class="modal-anim w-full max-w-sm bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-2xl space-y-4">
+        <div class="flex items-start gap-3">
+          <div id="confirm-icon" class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 id="confirm-title" class="font-display font-bold text-base">Êtes-vous sûr ?</h3>
+            <p id="confirm-message" class="text-xs text-stone-500 dark:text-stone-400 mt-1 leading-relaxed"></p>
+          </div>
+        </div>
+        <div class="flex gap-2 pt-2">
+          <button id="confirm-cancel" class="flex-1 py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-xl text-xs font-bold uppercase tracking-wider">Annuler</button>
+          <button id="confirm-ok" class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider">Confirmer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALE ADMIN -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+      <div class="modal-anim w-full max-w-sm bg-stone-900 text-white p-6 rounded-2xl border border-stone-800 space-y-4 shadow-2xl">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold text-sm">Accès administrateur</h3>
+          <button onclick="closeAdminModal()" class="text-stone-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <p class="text-xs text-stone-400">Code secret :</p>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+          <input type="password" id="admin-secret-input" placeholder="•••" class="w-full px-4 py-2 bg-stone-950 border border-stone-800 rounded-xl text-center text-lg font-mono tracking-widest focus:outline-none focus:border-stone-500" />
+          <button type="submit" class="w-full py-2.5 bg-stone-100 text-stone-950 font-bold rounded-xl text-xs uppercase">Valider</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="bg-stone-100 dark:bg-[#0A0A0B] border-t border-stone-200 dark:border-stone-800 py-10 mt-auto text-xs text-stone-500 text-center space-y-3">
+      <p class="font-display font-bold text-stone-900 dark:text-stone-100 text-sm">Boutique 1</p>
+      <p>Vente en ligne · Paiement FCFA · Livraison Dakar / Abidjan / Paris</p>
+      <p id="footer-email-line">Support : <a id="footer-email" href="#" class="underline hover:text-stone-900">contact@boutique1.sn</a></p>
+      <p>© 2026 Boutique 1. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <script>
+      /* =========================================================
+         CONFIG FIREBASE
+         ========================================================= */
+      const firebaseConfig = {
+        apiKey: "AIzaSyBTz1-3eN5yjbvEXRe_SYBRyF7Yo4tBxkk",
+        authDomain: "boutique-246.firebaseapp.com",
+        projectId: "boutique-246",
+        storageBucket: "boutique-246.firebasestorage.app",
+        messagingSenderId: "900440633327",
+        appId: "1:900440633327:web:191947c3713ef89249d01a",
+        measurementId: "G-2J7HCMVRSM"
+      };
+
+      const ADMIN_CODE = '246';
+
+      const MERCHANT_PHONE_DISPLAY = '+221 77 123 45 67';
+      const MERCHANT_PHONE_WA      = '221771234567';
+
+      /* ===== SVG ===== */
+      const SVG = {
+        whatsapp: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`,
+        tiktok: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>`,
+        instagram: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`,
+        envelope: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+        pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>`
+      };
+
+      /* ===== INIT FIREBASE ===== */
+      const firebaseConfigured = firebaseConfig.apiKey && firebaseConfig.apiKey !== 'REMPLACE_MOI';
+      let db = null;
+      if (firebaseConfigured) {
+        try { firebase.initializeApp(firebaseConfig); db = firebase.firestore(); }
+        catch (e) { console.warn('Firebase init failed:', e); }
+      }
+
+      const connBadge = document.getElementById('conn-badge');
+      connBadge.classList.remove('hidden');
+      connBadge.textContent = db ? '● Firebase' : '● Local';
+      connBadge.className = db
+        ? 'p-2 rounded-lg text-[10px] font-mono text-emerald-600 dark:text-emerald-400'
+        : 'p-2 rounded-lg text-[10px] font-mono text-amber-500';
+
+      /* ===== FCFA ===== */
+      const fcfaFormatter = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
+      function formatFCFA(a) { return fcfaFormatter.format(Math.round(a)) + ' FCFA'; }
+
+      /* ===== SEED ===== */
+      const SEED_PRODUCTS = [
+        { id:'prod-1', name:'Hoodie Oversize French Terry Noir Minéral', price_fcfa:72000, compare_fcfa:88500, category:'Hauts',
+          material:'100% Coton biologique lourd 480 g/m²', description:'Molleton de coton biologique lourd délavé aux enzymes.', stock:24,
+          sizes:['S','M','L','XL'], colors:['Noir Minéral','Gris Asphalte'],
+          image:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
+          video:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
+        { id:'prod-2', name:"Veste d'Atelier en Laine Foulée Anthracite", price_fcfa:121000, compare_fcfa:144500, category:'Vestes',
+          material:'80% Laine vierge, 20% Cachemire recyclé', description:'Laine foulée isolante.', stock:12,
+          sizes:['M','L','XL'], colors:['Anthracite','Bleu Nuit'],
+          image:'https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80', video:null },
+        { id:'prod-3', name:'Pantalon Plissé Ample Twill Sable', price_fcfa:82000, compare_fcfa:null, category:'Bas',
+          material:'100% Coton sergé italien', description:'Double pli italien à la taille.', stock:18,
+          sizes:['S','M','L','XL'], colors:['Sable','Noir'],
+          image:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80', video:null },
+        { id:'prod-4', name:'T-Shirt Boxy Épais Coton Brut Écru', price_fcfa:31500, compare_fcfa:36000, category:'Hauts',
+          material:'100% Coton peigné non blanchi 260 g/m²', description:'Jersey non teinté lourd 260g.', stock:35,
+          sizes:['XS','S','M','L','XL'], colors:['Écru Naturel','Noir'],
+          image:'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80', video:null }
+      ];
+
+      const DEFAULT_CONTACTS = {
+        whatsapp: '+221 77 123 45 67',
+        tiktok: '',
+        instagram: '',
+        email: 'contact@boutique1.sn',
+        address: ''
+      };
+
+      /* ===== ÉTAT ===== */
+      let products = [];
+      let reviewsByProduct = {};
+      let contacts = { ...DEFAULT_CONTACTS };
+      let cart = [];
+      let currentCategory = 'Tous';
+      let activeProduct = null;
+      let selectedQty = 1;
+      let selectedSize = '';
+      let selectedColor = '';
+      let isAdmin = false;
+      let currentImageFile = null;
+      let currentEditImageFile = null;
+      let viewHistory = ['catalog'];
+      let _statsPeriod = 'day';
+
+      /* ===== MODALE CONFIRMATION ===== */
+      let _confirmCallback = null;
+      function confirmAction(opts, onConfirm) {
+        const modal = document.getElementById('confirm-modal');
+        document.getElementById('confirm-title').textContent = opts.title || 'Êtes-vous sûr ?';
+        document.getElementById('confirm-message').textContent = opts.message || '';
+        const okBtn = document.getElementById('confirm-ok');
+        okBtn.textContent = opts.okText || 'Confirmer';
+        okBtn.className = (opts.danger !== false)
+          ? 'flex-1 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider'
+          : 'flex-1 py-2.5 bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-950 rounded-xl text-xs font-bold uppercase tracking-wider';
+        _confirmCallback = onConfirm;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      function _closeConfirm(confirmed) {
+        const modal = document.getElementById('confirm-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        const cb = _confirmCallback;
+        _confirmCallback = null;
+        if (confirmed && typeof cb === 'function') cb();
+      }
+      document.getElementById('confirm-cancel').addEventListener('click', () => _closeConfirm(false));
+      document.getElementById('confirm-ok').addEventListener('click', () => _closeConfirm(true));
+      document.getElementById('confirm-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'confirm-modal') _closeConfirm(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !document.getElementById('confirm-modal').classList.contains('hidden')) _closeConfirm(false);
+      });
+
+      /* ===== VIEWS ===== */
+      function setView(view) {
+        ['view-catalog','view-detail','view-checkout','view-confirmation','view-admin'].forEach(v => {
+          document.getElementById(v).classList.add('hidden');
+        });
+        document.getElementById('view-' + view).classList.remove('hidden');
+        document.getElementById('back-btn').classList.toggle('hidden', view === 'catalog');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      function pushView(view) {
+        if (viewHistory[viewHistory.length - 1] !== view) viewHistory.push(view);
+      }
+      function handleBack() {
+        viewHistory.pop();
+        const prev = viewHistory[viewHistory.length - 1] || 'catalog';
+        if (prev === 'detail' && activeProduct) setView('detail');
+        else if (prev === 'checkout') setView('checkout');
+        else if (prev === 'admin' && isAdmin) setView('admin');
+        else showCatalog();
+      }
+
+      /* ===== MENU ===== */
+      function toggleMainMenu() {
+        const menu = document.getElementById('main-menu');
+        const overlay = document.getElementById('main-menu-overlay');
+        const isOpen = !menu.classList.contains('-translate-x-full');
+        if (isOpen) { menu.classList.add('-translate-x-full'); overlay.classList.add('hidden'); }
+        else { menu.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); }
+      }
+      function menuGo(fn) { toggleMainMenu(); setTimeout(fn, 250); }
+
+      /* ===== CHARGEMENT ===== */
+      async function loadProducts() {
+        if (db) {
+          try {
+            const snap = await db.collection('products').get();
+            if (snap.empty) {
+              for (const p of SEED_PRODUCTS) { const { id, ...d } = p; await db.collection('products').doc(id).set(d); }
+              const snap2 = await db.collection('products').get();
+              products = snap2.docs.map(d => ({ id: d.id, ...d.data() }));
+            } else products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          } catch (e) { console.error(e); products = [...SEED_PRODUCTS]; }
+        } else {
+          const local = localStorage.getItem('boutique1_products');
+          products = local ? JSON.parse(local) : [...SEED_PRODUCTS];
+        }
+        renderCatalog();
+      }
+      async function loadContacts() {
+        if (db) {
+          try { const doc = await db.collection('settings').doc('contacts').get(); if (doc.exists) contacts = { ...DEFAULT_CONTACTS, ...doc.data() }; }
+          catch (e) {}
+        } else {
+          const local = localStorage.getItem('boutique1_contacts');
+          if (local) contacts = { ...DEFAULT_CONTACTS, ...JSON.parse(local) };
+        }
+        renderContacts();
+      }
+      function persistProductsLocal() { if (!db) localStorage.setItem('boutique1_products', JSON.stringify(products)); }
+      function persistContactsLocal() { if (!db) localStorage.setItem('boutique1_contacts', JSON.stringify(contacts)); }
+
+      async function loadReviews(productId) {
+        if (db) {
+          try {
+            const snap = await db.collection('reviews').where('product_id','==',productId).get();
+            reviewsByProduct[productId] = snap.docs.map(d => ({ id:d.id, ...d.data() }))
+              .sort((a,b) => (b.created_at||'').localeCompare(a.created_at||''));
+          } catch (e) { reviewsByProduct[productId] = []; }
+        } else reviewsByProduct[productId] = reviewsByProduct[productId] || [];
+      }
+
+      /* ===== CONTACTS ===== */
+      function normalizeWhatsapp(n) { return (n || '').replace(/[^\d]/g, ''); }
+
+      function renderContacts() {
+        const setIcons = () => {
+          const iw = document.getElementById('ic-wa'); if (iw) iw.innerHTML = SVG.whatsapp;
+          const it = document.getElementById('ic-tt'); if (it) it.innerHTML = SVG.tiktok;
+          const ii = document.getElementById('ic-ig'); if (ii) ii.innerHTML = SVG.instagram;
+        };
+        setIcons();
+
+        const wa = normalizeWhatsapp(contacts.whatsapp);
+        const tt = (contacts.tiktok || '').replace(/^@/, '').trim();
+        const ig = (contacts.instagram || '').replace(/^@/, '').trim();
+        const em = (contacts.email || '').trim();
+        const ad = (contacts.address || '').trim();
+
+        const mc = document.getElementById('menu-contacts');
+        mc.innerHTML = '';
+
+        if (wa) mc.innerHTML += `
+          <a href="https://wa.me/${wa}" target="_blank" rel="noopener"
+             class="block px-3 py-2.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-3">
+            ${SVG.whatsapp} WhatsApp
+          </a>`;
+        if (tt) mc.innerHTML += `
+          <a href="https://www.tiktok.com/@${tt}" target="_blank" rel="noopener"
+             class="block px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 font-semibold flex items-center gap-3">
+            ${SVG.tiktok} TikTok
+          </a>`;
+        if (ig) mc.innerHTML += `
+          <a href="https://instagram.com/${ig}" target="_blank" rel="noopener"
+             class="block px-3 py-2.5 rounded-lg hover:bg-pink-50 dark:hover:bg-pink-950/30 text-pink-600 dark:text-pink-400 font-semibold flex items-center gap-3">
+            ${SVG.instagram} Instagram
+          </a>`;
+        if (em) mc.innerHTML += `
+          <a href="mailto:${em}" class="block px-3 py-2.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3">
+            ${SVG.envelope} Email
+          </a>`;
+        if (ad) mc.innerHTML += `
+          <div class="block px-3 py-2.5 rounded-lg text-stone-500 flex items-center gap-3">
+            ${SVG.pin} ${ad}
+          </div>`;
+        if (!wa && !tt && !ig && !em && !ad) {
+          mc.innerHTML = '<p class="px-3 py-2 text-[11px] text-stone-400 italic">Aucun contact configuré.</p>';
+        }
+
+        const fEmail = document.getElementById('footer-email');
+        const fLine = document.getElementById('footer-email-line');
+        if (em) { fEmail.textContent = em; fEmail.href = `mailto:${em}`; fLine.style.display = ''; }
+        else fLine.style.display = 'none';
+
+        const preview = document.getElementById('contacts-preview');
+        if (preview) {
+          preview.innerHTML = '';
+          if (wa) preview.innerHTML += `<div class="flex items-center gap-3 px-3 py-2 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 rounded-lg font-semibold">${SVG.whatsapp} WhatsApp</div>`;
+          if (tt) preview.innerHTML += `<div class="flex items-center gap-3 px-3 py-2 bg-stone-50 dark:bg-stone-950 rounded-lg font-semibold">${SVG.tiktok} TikTok</div>`;
+          if (ig) preview.innerHTML += `<div class="flex items-center gap-3 px-3 py-2 bg-pink-50 dark:bg-pink-950/30 text-pink-600 dark:text-pink-400 rounded-lg font-semibold">${SVG.instagram} Instagram</div>`;
+          if (em) preview.innerHTML += `<div class="flex items-center gap-3 px-3 py-2 bg-stone-50 dark:bg-stone-950 rounded-lg">${SVG.envelope} ${em}</div>`;
+          if (!wa && !tt && !ig && !em) preview.innerHTML = '<p class="text-[10px] text-stone-400 italic">Aucun contact configuré</p>';
+        }
+
+        renderPaymentNumber();
+      }
+
+      function loadContactsForm() {
+        document.getElementById('cfg-whatsapp').value = contacts.whatsapp || '';
+        document.getElementById('cfg-tiktok').value = contacts.tiktok || '';
+        document.getElementById('cfg-instagram').value = contacts.instagram || '';
+        document.getElementById('cfg-email').value = contacts.email || '';
+        document.getElementById('cfg-address').value = contacts.address || '';
+      }
+
+      async function handleSaveContacts(e) {
+        e.preventDefault();
+        const btn = document.getElementById('cfg-save-btn');
+        const original = btn.innerHTML;
+        btn.disabled = true; btn.textContent = '⏳ …';
+        const newContacts = {
+          whatsapp: document.getElementById('cfg-whatsapp').value.trim(),
+          tiktok: document.getElementById('cfg-tiktok').value.trim().replace(/^@/,''),
+          instagram: document.getElementById('cfg-instagram').value.trim().replace(/^@/,''),
+          email: document.getElementById('cfg-email').value.trim(),
+          address: document.getElementById('cfg-address').value.trim(),
+          updated_at: new Date().toISOString()
+        };
+        try {
+          if (db) await db.collection('settings').doc('contacts').set(newContacts, { merge:true });
+          contacts = { ...DEFAULT_CONTACTS, ...newContacts };
+          persistContactsLocal();
+          renderContacts();
+          showToast('Contacts enregistrés ✓');
+        } catch (err) { alert('Erreur : ' + err.message); }
+        finally { btn.disabled = false; btn.innerHTML = original; }
+      }
+
+      /* ===== PAIEMENT ===== */
+      function renderPaymentNumber() {
+        const display = contacts.whatsapp || MERCHANT_PHONE_DISPLAY;
+        const waNum = (contacts.whatsapp || MERCHANT_PHONE_WA).replace(/[^\d]/g, '');
+        const el = document.getElementById('cart-pay-number');
+        if (el) el.textContent = display;
+        const wa = document.getElementById('cart-pay-wa');
+        if (wa) {
+          wa.href = `https://wa.me/${waNum}?text=${encodeURIComponent('Bonjour Boutique 1, je souhaite payer ma commande.')}`;
+        }
+      }
+
+      /* =========================================================
+         STATISTIQUES
+         ========================================================= */
+      const VIEWS_KEY = 'boutique1_views';
+
+      function _todayKey(d = new Date()) { return d.toISOString().slice(0, 10); }
+      function _daysAgoKey(n) { const d = new Date(); d.setDate(d.getDate() - n); return d.toISOString().slice(0, 10); }
+
+      function loadViews() {
+        try { return JSON.parse(localStorage.getItem(VIEWS_KEY) || '{}'); } catch { return {}; }
+      }
+      function saveViews(v) {
+        try { localStorage.setItem(VIEWS_KEY, JSON.stringify(v)); } catch {}
+      }
+      function trackProductView(productId) {
+        if (!productId) return;
+        const views = loadViews();
+        if (!views[productId]) views[productId] = {};
+        const day = _todayKey();
+        views[productId][day] = (views[productId][day] || 0) + 1;
+        saveViews(views);
+      }
+
+      async function loadOrders() {
+        if (db) {
+          try {
+            const snap = await db.collection('orders').get();
+            return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          } catch (e) { return []; }
+        } else {
+          try { return JSON.parse(localStorage.getItem('boutique1_orders') || '[]'); }
+          catch { return []; }
+        }
+      }
+
+      function periodKeys(period) {
+        const days = period === 'day' ? 1 : period === 'week' ? 7 : 30;
+        const set = new Set();
+        for (let i = 0; i < days; i++) set.add(_daysAgoKey(i));
+        return set;
+      }
+
+      async function renderStats(period = _statsPeriod) {
+        _statsPeriod = period;
+        ['day','week','month'].forEach(p => {
+          const btn = document.getElementById('stats-tab-' + p);
+          if (!btn) return;
+          const active = p === period;
+          btn.className = `stats-tab px-4 py-2 text-xs font-semibold rounded-lg ${
+            active ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 shadow-sm' : 'text-stone-600 dark:text-stone-400'
+          }`;
+        });
+
+        const keys = periodKeys(period);
+
+        /* --- VISITES --- */
+        const views = loadViews();
+        let totalViews = 0;
+        const viewByProduct = {};
+        Object.entries(views).forEach(([pid, days]) => {
+          Object.entries(days).forEach(([day, n]) => {
+            if (keys.has(day)) { totalViews += n; viewByProduct[pid] = (viewByProduct[pid] || 0) + n; }
+          });
+        });
+
+        /* --- COMMANDES --- */
+        const orders = await loadOrders();
+        const inPeriod = orders.filter(o => o.created_at && keys.has(o.created_at.slice(0, 10)));
+        const revenue = inPeriod.reduce((s, o) => s + (o.total_fcfa || 0), 0);
+        const avg = inPeriod.length ? Math.round(revenue / inPeriod.length) : 0;
+
+        /* --- ACHATS --- */
+        const salesByProduct = {};
+        inPeriod.forEach(o => {
+          (o.items || []).forEach(it => {
+            if (!it.product_id) return;
+            if (!salesByProduct[it.product_id]) salesByProduct[it.product_id] = { qty: 0, name: it.name || '—' };
+            salesByProduct[it.product_id].qty += (it.qty || 1);
+          });
+        });
+
+        /* --- KPI --- */
+        document.getElementById('stat-views').textContent = totalViews;
+        document.getElementById('stat-orders').textContent = inPeriod.length;
+        document.getElementById('stat-revenue').textContent = formatFCFA(revenue);
+        document.getElementById('stat-avg').textContent = formatFCFA(avg);
+
+        /* --- TOP VISITÉS --- */
+        const topViewsBox = document.getElementById('top-views');
+        const topViews = Object.entries(viewByProduct)
+          .map(([pid, n]) => {
+            const p = products.find(x => x.id === pid);
+            return { name: p?.name || 'Article supprimé', count: n, image: p?.image };
+          })
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+
+        if (!topViews.length) {
+          topViewsBox.innerHTML = '<p class="text-xs text-stone-400 italic py-4">Aucune visite enregistrée sur cette période.</p>';
+        } else {
+          const max = topViews[0].count;
+          topViewsBox.innerHTML = topViews.map((t, i) => `
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[10px] font-bold shrink-0">${i+1}</span>
+              <div class="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
+                ${t.image ? `<img src="${t.image}" class="w-full h-full object-cover" alt="">` : ''}
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold truncate">${t.name}</p>
+                <div class="h-1.5 bg-stone-100 dark:bg-stone-800 rounded-full mt-1 overflow-hidden">
+                  <div class="h-full bg-blue-500 rounded-full transition-all" style="width:${(t.count/max)*100}%"></div>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold shrink-0">${t.count}</span>
+            </div>
+          `).join('');
+        }
+
+        /* --- TOP ACHETÉS --- */
+        const topSalesBox = document.getElementById('top-sales');
+        const topSales = Object.entries(salesByProduct)
+          .map(([pid, v]) => {
+            const p = products.find(x => x.id === pid);
+            return { name: v.name, count: v.qty, image: p?.image };
+          })
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+
+        if (!topSales.length) {
+          topSalesBox.innerHTML = '<p class="text-xs text-stone-400 italic py-4">Aucune vente sur cette période.</p>';
+        } else {
+          const max = topSales[0].count;
+          topSalesBox.innerHTML = topSales.map((t, i) => `
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[10px] font-bold shrink-0">${i+1}</span>
+              <div class="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
+                ${t.image ? `<img src="${t.image}" class="w-full h-full object-cover" alt="">` : ''}
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold truncate">${t.name}</p>
+                <div class="h-1.5 bg-stone-100 dark:bg-stone-800 rounded-full mt-1 overflow-hidden">
+                  <div class="h-full bg-emerald-500 rounded-full transition-all" style="width:${(t.count/max)*100}%"></div>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold shrink-0">${t.count}</span>
+            </div>
+          `).join('');
+        }
+
+        /* --- HISTORIQUE 7 JOURS --- */
+        const chartBox = document.getElementById('chart-7days');
+        if (chartBox) {
+          const dayLabels = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+          const days7 = [];
+          for (let i = 6; i >= 0; i--) {
+            const d = new Date(); d.setDate(d.getDate() - i);
+            const key = d.toISOString().slice(0, 10);
+            const label = dayLabels[d.getDay()] + ' ' + String(d.getDate()).padStart(2,'0');
+            const dayOrders = orders.filter(o => o.created_at && o.created_at.slice(0,10) === key);
+            const dayRevenue = dayOrders.reduce((s,o) => s + (o.total_fcfa||0), 0);
+            let dayViews = 0;
+            Object.values(views).forEach(days => { if (days[key]) dayViews += days[key]; });
+            days7.push({ label, orders: dayOrders.length, revenue: dayRevenue, views: dayViews, isToday: i === 0 });
+          }
+          const maxRev = Math.max(...days7.map(d => d.revenue), 1);
+          chartBox.innerHTML = days7.map(d => `
+            <div class="flex items-center gap-3 text-xs">
+              <span class="w-14 shrink-0 font-mono font-semibold ${d.isToday ? 'text-stone-900 dark:text-white' : 'text-stone-500'}">${d.label}</span>
+              <div class="flex-1 h-6 bg-stone-100 dark:bg-stone-800 rounded-lg overflow-hidden relative">
+                <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-lg transition-all" style="width:${(d.revenue/maxRev)*100}%"></div>
+                <span class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-mono font-bold text-stone-600 dark:text-stone-300">
+                  ${d.revenue > 0 ? formatFCFA(d.revenue) : '—'}
+                </span>
+              </div>
+              <span class="w-16 shrink-0 text-right text-[10px] text-stone-400 font-mono">${d.orders} cmd · ${d.views} vues</span>
+            </div>
+          `).join('');
+        }
+      }
+
+      /* ===== CATALOGUE ===== */
+      function renderCatalog() {
+        const grid = document.getElementById('product-grid');
+        const search = (document.getElementById('search-input').value || '').toLowerCase();
+        grid.innerHTML = '';
+        const filtered = products.filter(p => {
+          const mCat = currentCategory === 'Tous' || p.category === currentCategory;
+          const mSearch = (p.name||'').toLowerCase().includes(search) || (p.material||'').toLowerCase().includes(search);
+          return mCat && mSearch;
+        });
+        if (!filtered.length) {
+          grid.innerHTML = '<div class="col-span-full text-center text-xs text-stone-400 py-10">Aucun article trouvé.</div>';
+          return;
+        }
+        filtered.forEach(p => {
+          const revs = reviewsByProduct[p.id] || [];
+          const avg = revs.length ? (revs.reduce((s,r)=>s+r.rating,0)/revs.length).toFixed(1) : null;
+          grid.innerHTML += `
+            <div class="group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200/70 dark:border-stone-800 hover:shadow-lg hover:-translate-y-1 cursor-pointer flex flex-col justify-between transition-all relative">
+              ${isAdmin ? `
+                <div class="absolute top-2 right-2 z-10 flex gap-1.5">
+                  <button onclick="event.stopPropagation(); openEditProduct('${p.id}')" class="w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                  </button>
+                  <button onclick="event.stopPropagation(); deleteProduct('${p.id}')" class="w-8 h-8 rounded-full bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center shadow-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  </button>
+                </div>
+              ` : ''}
+              <div onclick="openProductDetail('${p.id}')">
+                <div class="aspect-[4/3] bg-stone-100 overflow-hidden relative">
+                  <img src="${p.image || ''}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  ${p.video ? `<span class="absolute top-2 left-2 px-2 py-0.5 bg-black/70 text-white rounded text-[10px] uppercase font-bold tracking-wider">Vidéo</span>` : ''}
+                  ${p.compare_fcfa ? `<span class="absolute bottom-2 left-2 px-2 py-0.5 bg-rose-600 text-white rounded text-[10px] uppercase font-bold tracking-wider">Promo</span>` : ''}
+                </div>
+                <div class="p-4 space-y-2">
+                  <div class="flex justify-between items-center text-xs text-stone-400">
+                    <span>${p.category}</span>
+                    ${avg ? `<span class="flex items-center gap-1 text-amber-500 font-mono font-bold"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg> ${avg} (${revs.length})</span>` : ''}
+                  </div>
+                  <h3 class="font-semibold text-xs line-clamp-1">${p.name}</h3>
+                  <div class="pt-2 border-t border-stone-100 dark:border-stone-800 flex justify-between items-baseline">
+                    <div>
+                      <span class="font-bold text-sm font-mono">${formatFCFA(p.price_fcfa)}</span>
+                      ${p.compare_fcfa ? `<span class="text-[10px] text-stone-400 line-through ml-1 font-mono">${formatFCFA(p.compare_fcfa)}</span>` : ''}
+                    </div>
+                    <span class="text-[11px] ${p.stock > 0 ? 'text-emerald-600' : 'text-rose-500'} font-medium">${p.stock > 0 ? 'En stock' : 'Rupture'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      function filterCategory(cat) {
+        currentCategory = cat;
+        document.querySelectorAll('.cat-btn').forEach(b => b.className = 'cat-btn px-4 py-2 text-xs font-semibold rounded-lg text-stone-600 dark:text-stone-400');
+        const active = document.getElementById('cat-' + cat);
+        if (active) active.className = 'cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 shadow-sm';
+        showCatalog(); renderCatalog();
+      }
+      function handleSearch() { renderCatalog(); }
+
+      async function openProductDetail(id) {
+        trackProductView(id);                 /* ← tracking visite */
+        activeProduct = products.find(p => p.id === id);
+        if (!activeProduct) return;
+        await loadReviews(activeProduct.id);
+        selectedQty = 1;
+        selectedSize = (activeProduct.sizes || [])[0] || '';
+        selectedColor = (activeProduct.colors || [])[0] || '';
+
+        document.getElementById('pdp-title').innerText = activeProduct.name;
+        document.getElementById('pdp-category').innerText = activeProduct.category;
+        document.getElementById('pdp-material-header').innerText = (activeProduct.material || '').split(',')[0];
+        document.getElementById('pdp-desc').innerText = activeProduct.description || '';
+        document.getElementById('pdp-price-fcfa').innerText = formatFCFA(activeProduct.price_fcfa);
+        const compareEl = document.getElementById('pdp-compare-fcfa');
+        if (activeProduct.compare_fcfa) { compareEl.innerText = formatFCFA(activeProduct.compare_fcfa); compareEl.classList.remove('hidden'); }
+        else compareEl.classList.add('hidden');
+
+        document.getElementById('pdp-main-image').src = activeProduct.image || '';
+        document.getElementById('pdp-qty').innerText = '1';
+        document.getElementById('pdp-btn-total').innerText = '· ' + formatFCFA(activeProduct.price_fcfa);
+        document.getElementById('pdp-stock-status').innerText = activeProduct.stock > 0
+          ? `En stock (${activeProduct.stock} disponibles)` : 'Rupture de stock';
+
+        const videoBtn = document.getElementById('btn-tab-video');
+        if (activeProduct.video) { videoBtn.style.display = 'block'; document.getElementById('pdp-video-player').src = activeProduct.video; }
+        else { videoBtn.style.display = 'none'; document.getElementById('pdp-video-player').src = ''; }
+        setMediaTab('photo');
+
+        document.getElementById('pdp-sizes').innerHTML = (activeProduct.sizes||[]).map(s => `
+          <button data-size="${s}" onclick="selectSize('${s}')" class="size-btn px-3 py-1.5 rounded-lg border text-xs font-mono font-bold ${s === selectedSize ? 'bg-stone-900 text-white dark:bg-white dark:text-stone-900 border-transparent' : 'border-stone-200'}">${s}</button>
+        `).join('') || '<span class="text-xs text-stone-400">—</span>';
+
+        document.getElementById('pdp-colors').innerHTML = (activeProduct.colors||[]).map(c => `
+          <button data-color="${c}" onclick="selectColor('${c.replace(/'/g,"\\'")}')" class="color-btn px-3 py-1.5 rounded-lg border text-xs ${c === selectedColor ? 'bg-stone-900 text-white dark:bg-white dark:text-stone-900 border-transparent' : 'border-stone-200'}">${c}</button>
+        `).join('') || '<span class="text-xs text-stone-400">—</span>';
+
+        renderReviews();
+        const adminActions = document.getElementById('pdp-admin-actions');
+        adminActions.classList.toggle('hidden', !isAdmin);
+        adminActions.classList.toggle('flex', isAdmin);
+        pushView('detail'); setView('detail');
+      }
+
+      function selectSize(s) {
+        selectedSize = s;
+        document.querySelectorAll('.size-btn').forEach(b => b.className = 'size-btn px-3 py-1.5 rounded-lg border text-xs font-mono font-bold border-stone-200');
+        const el = document.querySelector(`.size-btn[data-size="${s}"]`);
+        if (el) el.className = 'size-btn px-3 py-1.5 rounded-lg border text-xs font-mono font-bold bg-stone-900 text-white dark:bg-white dark:text-stone-900 border-transparent';
+      }
+      function selectColor(c) {
+        selectedColor = c;
+        document.querySelectorAll('.color-btn').forEach(b => b.className = 'color-btn px-3 py-1.5 rounded-lg border text-xs border-stone-200');
+        const el = document.querySelector(`.color-btn[data-color="${c}"]`);
+        if (el) el.className = 'color-btn px-3 py-1.5 rounded-lg border text-xs bg-stone-900 text-white dark:bg-white dark:text-stone-900 border-transparent';
+      }
+      function setMediaTab(tab) {
+        const photo = document.getElementById('pdp-photo-container');
+        const video = document.getElementById('pdp-video-container');
+        const btnP = document.getElementById('btn-tab-photo');
+        const btnV = document.getElementById('btn-tab-video');
+        if (tab === 'photo') {
+          photo.classList.remove('hidden'); video.classList.add('hidden');
+          btnP.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-white dark:bg-stone-800 shadow-sm';
+          btnV.className = 'px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500';
+        } else {
+          photo.classList.add('hidden'); video.classList.remove('hidden');
+          btnV.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-white dark:bg-stone-800 shadow-sm';
+          btnP.className = 'px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500';
+        }
+      }
+      function incrementQty() { selectedQty++; document.getElementById('pdp-qty').innerText = selectedQty; document.getElementById('pdp-btn-total').innerText = '· ' + formatFCFA(activeProduct.price_fcfa * selectedQty); }
+      function decrementQty() { if (selectedQty > 1) selectedQty--; document.getElementById('pdp-qty').innerText = selectedQty; document.getElementById('pdp-btn-total').innerText = '· ' + formatFCFA(activeProduct.price_fcfa * selectedQty); }
+
+      /* ===== AVIS ===== */
+      function renderReviews() {
+        const list = document.getElementById('pdp-reviews-list');
+        const revs = reviewsByProduct[activeProduct.id] || [];
+        const avg = revs.length ? (revs.reduce((s,r)=>s+r.rating,0)/revs.length).toFixed(1) : '—';
+        document.getElementById('pdp-rating-avg').innerText = avg;
+        document.getElementById('pdp-rating-count').innerText = `(${revs.length} avis)`;
+        if (!revs.length) { list.innerHTML = '<div class="col-span-full text-xs text-stone-400 italic py-4">Aucun avis.</div>'; return; }
+        list.innerHTML = revs.map(r => `
+          <div class="p-4 bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 space-y-2 text-xs">
+            <div class="flex justify-between items-center">
+              <span class="flex gap-0.5">${Array.from({length:5}).map((_,i) => `<svg class="w-3 h-3 ${i < r.rating ? 'text-amber-500' : 'text-stone-300 dark:text-stone-700'}" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`).join('')}</span>
+              <span class="text-stone-400 text-[10px]">${r.created_at ? new Date(r.created_at).toLocaleDateString('fr-FR') : 'Récemment'}</span>
+            </div>
+            ${r.title ? `<h4 class="font-bold">${r.title}</h4>` : ''}
+            <p class="text-stone-600 dark:text-stone-400 italic">« ${r.comment} »</p>
+            <div class="pt-2 border-t border-stone-100 dark:border-stone-800 text-[10px] text-stone-400">
+              <span class="font-semibold text-stone-700 dark:text-stone-300">${r.author} (Achat vérifié)</span>
+            </div>
+          </div>
+        `).join('');
+      }
+      function toggleReviewForm() { document.getElementById('review-form').classList.toggle('hidden'); }
+      async function submitReview(e) {
+        e.preventDefault();
+        const review = {
+          product_id: activeProduct.id,
+          author: document.getElementById('rev-author').value.trim(),
+          rating: parseInt(document.getElementById('rev-rating').value, 10),
+          title: document.getElementById('rev-title').value.trim() || null,
+          comment: document.getElementById('rev-comment').value.trim(),
+          created_at: new Date().toISOString()
+        };
+        try {
+          if (db) { const ref = await db.collection('reviews').add(review); review.id = ref.id; }
+          else review.id = crypto.randomUUID();
+          reviewsByProduct[activeProduct.id] = [review, ...(reviewsByProduct[activeProduct.id]||[])];
+          document.getElementById('review-form').reset();
+          toggleReviewForm(); renderReviews(); renderCatalog();
+          showToast('Avis publié');
+        } catch (err) { alert('Erreur : ' + err.message); }
+      }
+
+      /* ===== PANIER ===== */
+      function addToCartFromPDP() {
+        if (!activeProduct || activeProduct.stock <= 0) return;
+        cart.push({ product: activeProduct, size: selectedSize, color: selectedColor, qty: selectedQty });
+        updateCartBadge(); toggleCartDrawer();
+      }
+      function updateCartBadge() { document.getElementById('cart-counter').innerText = cart.reduce((s,i)=>s+i.qty,0); }
+      function toggleCartDrawer() { document.getElementById('cart-drawer').classList.toggle('hidden'); renderCart(); }
+      function renderCart() {
+        const c = document.getElementById('cart-items');
+        c.innerHTML = ''; let total = 0;
+        if (!cart.length) c.innerHTML = '<p class="text-xs text-stone-400 text-center py-8">Votre panier est vide.</p>';
+        cart.forEach((item, idx) => {
+          const lt = item.product.price_fcfa * item.qty;
+          total += lt;
+          c.innerHTML += `
+            <div class="flex gap-3 bg-white dark:bg-stone-800 p-3 rounded-xl border border-stone-200 dark:border-stone-700 text-xs items-center justify-between">
+              <div>
+                <h4 class="font-bold">${item.product.name}</h4>
+                <p class="text-stone-400 text-[11px]">${item.size} · ${item.color} (x${item.qty})</p>
+                <span class="font-mono font-semibold">${formatFCFA(lt)}</span>
+              </div>
+              <button onclick="removeCartItem(${idx})" class="text-rose-500 font-bold p-1">✕</button>
+            </div>`;
+        });
+        document.getElementById('cart-total-fcfa').innerText = formatFCFA(total);
+      }
+      function removeCartItem(idx) { cart.splice(idx,1); updateCartBadge(); renderCart(); }
+
+      function openCheckout() {
+        if (!cart.length) { alert('Votre panier est vide.'); return; }
+        toggleCartDrawer();
+        const chkItems = document.getElementById('checkout-items');
+        chkItems.innerHTML = ''; let total = 0;
+        cart.forEach(item => {
+          total += item.product.price_fcfa * item.qty;
+          chkItems.innerHTML += `<div class="py-2 flex justify-between text-xs"><span>${item.product.name} (x${item.qty})</span><span class="font-mono font-bold">${formatFCFA(item.product.price_fcfa * item.qty)}</span></div>`;
+        });
+        document.getElementById('checkout-total-fcfa').innerText = formatFCFA(total);
+        const cp = document.getElementById('cart-customer-phone')?.value.trim();
+        if (cp) document.getElementById('chk-phone').value = cp;
+        renderPaymentNumber();
+        pushView('checkout'); setView('checkout');
+      }
+
+      async function handleOrderSubmit(e) {
+        e.preventDefault();
+        const total = cart.reduce((s,i)=>s + i.product.price_fcfa * i.qty, 0);
+        const order = {
+          customer: {
+            name: document.getElementById('chk-name').value.trim(),
+            email: document.getElementById('chk-email').value.trim(),
+            phone: document.getElementById('chk-phone').value.trim(),
+            address: document.getElementById('chk-address').value.trim(),
+            postal: document.getElementById('chk-postal').value.trim(),
+            city: document.getElementById('chk-city').value.trim()
+          },
+          items: cart.map(i => ({ product_id: i.product.id, name: i.product.name, size: i.size, color: i.color, qty: i.qty, price_fcfa: i.product.price_fcfa })),
+          payment: {
+            method: document.querySelector('input[name="pay"]:checked')?.value || 'cod',
+            customer_phone: document.getElementById('chk-phone').value.trim(),
+            merchant_phone: contacts.whatsapp || MERCHANT_PHONE_DISPLAY
+          },
+          total_fcfa: total, status: 'pending', created_at: new Date().toISOString()
+        };
+        try {
+          if (db) await db.collection('orders').add(order);
+          else {
+            const stored = JSON.parse(localStorage.getItem('boutique1_orders') || '[]');
+            stored.push({ ...order, id: crypto.randomUUID() });
+            localStorage.setItem('boutique1_orders', JSON.stringify(stored));
+          }
+        } catch (err) {}
+        cart = []; updateCartBadge();
+        pushView('confirmation'); setView('confirmation');
+        e.target.reset();
+      }
+
+      function showCatalog() { viewHistory = ['catalog']; setView('catalog'); renderCatalog(); }
+
+      /* ===== ADMIN ===== */
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) { e.preventDefault(); openAdminModal(); }
+      });
+
+      (function bindLogoLongPress() {
+        const logo = document.getElementById('brand-logo');
+        if (!logo) return;
+        let timer = null;
+        const start = () => { timer = setTimeout(() => { timer = null; openAdminModal(); }, 1500); };
+        const cancel = () => { if (timer) { clearTimeout(timer); timer = null; } };
+        logo.addEventListener('mousedown', start);
+        logo.addEventListener('mouseup', cancel);
+        logo.addEventListener('mouseleave', cancel);
+        logo.addEventListener('touchstart', start, { passive: true });
+        logo.addEventListener('touchend', cancel);
+        logo.addEventListener('touchcancel', cancel);
+      })();
+
+      function openAdminModal() { document.getElementById('admin-modal').classList.remove('hidden'); setTimeout(() => document.getElementById('admin-secret-input').focus(), 50); }
+      function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); document.getElementById('admin-secret-input').value = ''; }
+      function handleAdminLogin(e) {
+        e.preventDefault();
+        const code = document.getElementById('admin-secret-input').value.trim();
+        if (code === ADMIN_CODE) { isAdmin = true; closeAdminModal(); pushView('admin'); setView('admin'); openAdminDashboard(); }
+        else alert('Code incorrect.');
+      }
+      function openAdminDashboard() { renderDeleteList(); renderEditSelect(); loadContactsForm(); renderContacts(); showAdminTab('stats'); renderStats('day'); }
+
+      function logoutAdmin() {
+        confirmAction({
+          title: 'Quitter le mode admin ?',
+          message: 'Vous ne pourrez plus modifier les articles tant que vous n\'aurez pas ressaisi le code.',
+          okText: 'Quitter',
+          danger: false
+        }, () => { isAdmin = false; showCatalog(); });
+      }
+
+      function showAdminTab(tab) {
+        ['stats','publish','edit','delete','contacts'].forEach(t => {
+          document.getElementById('admin-panel-' + t).classList.toggle('hidden', t !== tab);
+          const btn = document.getElementById('admin-tab-' + t);
+          const isActive = t === tab;
+          btn.className = `admin-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap flex items-center gap-2 ${isActive ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 shadow-sm' : 'text-stone-600 dark:text-stone-400'}`;
+        });
+        if (tab === 'edit') renderEditSelect();
+        if (tab === 'delete') renderDeleteList();
+        if (tab === 'contacts') { loadContactsForm(); renderContacts(); }
+        if (tab === 'stats') renderStats(_statsPeriod);
+      }
+
+      function renderDeleteList() {
+        const list = document.getElementById('admin-delete-list');
+        if (!list) return;
+        if (!products.length) { list.innerHTML = '<p class="text-xs text-stone-400 italic py-4">Aucun article.</p>'; return; }
+        list.innerHTML = products.map(p => `
+          <div class="flex items-center gap-3 p-3 bg-stone-50 dark:bg-stone-950 rounded-xl border border-stone-200 dark:border-stone-800">
+            <img src="${p.image || ''}" alt="" class="w-14 h-14 rounded-lg object-cover shrink-0 bg-stone-200" />
+            <div class="flex-1 min-w-0">
+              <p class="font-bold text-xs truncate">${p.name}</p>
+              <p class="text-[10px] text-stone-500">${p.category} · ${formatFCFA(p.price_fcfa)} · Stock ${p.stock}</p>
+            </div>
+            <button onclick="deleteProduct('${p.id}')" class="w-10 h-10 rounded-xl bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center shadow-md shrink-0" title="Supprimer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>`).join('');
+      }
+
+      function deleteProduct(id) {
+        const p = products.find(x => x.id === id);
+        if (!p) return;
+        confirmAction({
+          title: 'Supprimer cet article ?',
+          message: `« ${p.name} » sera définitivement supprimé. Cette action est irréversible.`,
+          okText: 'Supprimer',
+          danger: true
+        }, async () => {
+          try {
+            if (db) await db.collection('products').doc(id).delete();
+            products = products.filter(x => x.id !== id);
+            persistProductsLocal();
+            renderDeleteList(); renderEditSelect(); renderCatalog();
+            if (activeProduct && activeProduct.id === id) { activeProduct = null; showCatalog(); }
+            showToast(`« ${p.name} » supprimé`);
+          } catch (err) { alert('Erreur : ' + err.message); }
+        });
+      }
+
+      function renderEditSelect() {
+        const sel = document.getElementById('edit-select');
+        if (!sel) return;
+        const current = sel.value;
+        sel.innerHTML = '<option value="">— Choisir un article —</option>' + products.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+        sel.value = current;
+      }
+      function openEditProduct(id) {
+        if (!isAdmin) { openAdminModal(); return; }
+        if (!id) return;
+        pushView('admin'); setView('admin');
+        openAdminDashboard(); showAdminTab('edit');
+        setTimeout(() => { document.getElementById('edit-select').value = id; loadProductForEdit(id); }, 100);
+      }
+      function loadProductForEdit(id) {
+        const form = document.getElementById('edit-form');
+        if (!id) { form.classList.add('hidden'); return; }
+        const p = products.find(x => x.id === id);
+        if (!p) { form.classList.add('hidden'); return; }
+        document.getElementById('edit-id').value = p.id;
+        document.getElementById('edit-name').value = p.name || '';
+        document.getElementById('edit-price').value = p.price_fcfa || '';
+        document.getElementById('edit-compare').value = p.compare_fcfa || '';
+        document.getElementById('edit-cat').value = p.category || 'Hauts';
+        document.getElementById('edit-stock').value = p.stock || 0;
+        document.getElementById('edit-material').value = p.material || '';
+        document.getElementById('edit-video').value = p.video || '';
+        document.getElementById('edit-desc').value = p.description || '';
+        document.getElementById('edit-img-preview').innerHTML = p.image ? `<img src="${p.image}" class="w-full h-full object-cover" alt="" />` : 'Aperçu';
+        document.getElementById('edit-upload-status').classList.add('hidden');
+        currentEditImageFile = null;
+        form.classList.remove('hidden');
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function resetEditForm() {
+        document.getElementById('edit-select').value = '';
+        document.getElementById('edit-form').classList.add('hidden');
+        currentEditImageFile = null;
+      }
+      async function handleEditProduct(e) {
+        e.preventDefault();
+        const id = document.getElementById('edit-id').value;
+        const p = products.find(x => x.id === id);
+        if (!p) { alert('Article introuvable.'); return; }
+        const submitBtn = document.getElementById('edit-submit');
+        const original = submitBtn.innerHTML;
+        submitBtn.disabled = true; submitBtn.textContent = '⏳ …';
+        try {
+          let imageUrl = p.image;
+          if (currentEditImageFile) {
+            const statusEl = document.getElementById('edit-upload-status');
+            statusEl.classList.remove('hidden');
+            statusEl.textContent = '⏳ Compression…';
+            imageUrl = await uploadProductImage(currentEditImageFile);
+            statusEl.textContent = 'Image mise à jour';
+          }
+          const updated = {
+            name: document.getElementById('edit-name').value.trim(),
+            price_fcfa: Math.round(parseFloat(document.getElementById('edit-price').value)),
+            compare_fcfa: document.getElementById('edit-compare').value ? Math.round(parseFloat(document.getElementById('edit-compare').value)) : null,
+            category: document.getElementById('edit-cat').value,
+            stock: parseInt(document.getElementById('edit-stock').value || '0', 10),
+            material: document.getElementById('edit-material').value.trim(),
+            description: document.getElementById('edit-desc').value.trim(),
+            image: imageUrl,
+            video: document.getElementById('edit-video').value.trim() || null
+          };
+          if (db) await db.collection('products').doc(id).update(updated);
+          Object.assign(p, updated);
+          persistProductsLocal();
+          currentEditImageFile = null;
+          renderDeleteList(); renderEditSelect(); renderCatalog();
+          showToast('Article mis à jour');
+        } catch (err) { alert('Erreur : ' + err.message); }
+        finally { submitBtn.disabled = false; submitBtn.innerHTML = original; }
+      }
+
+      function showToast(msg) {
+        const t = document.createElement('div');
+        t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] px-4 py-2 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 rounded-xl text-xs font-semibold shadow-2xl opacity-0 transition-opacity duration-300';
+        t.textContent = msg;
+        document.body.appendChild(t);
+        requestAnimationFrame(() => t.style.opacity = '1');
+        setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 2200);
+      }
+
+      /* ===== IMAGES ===== */
+      function bindImageDrop(dropId, fileId, previewId, statusId, onSelect) {
+        const drop = document.getElementById(dropId);
+        const file = document.getElementById(fileId);
+        const preview = document.getElementById(previewId);
+        const status = document.getElementById(statusId);
+        if (!drop) return;
+        drop.addEventListener('click', (e) => { if (e.target.closest('input, button')) return; file.click(); });
+        drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('dragover'); });
+        drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+        drop.addEventListener('drop', (e) => {
+          e.preventDefault(); drop.classList.remove('dragover');
+          const f = e.dataTransfer.files[0];
+          if (f && f.type.startsWith('image/')) handleSelect(f);
+        });
+        file.addEventListener('change', (e) => { const f = e.target.files[0]; if (f) handleSelect(f); });
+        function handleSelect(f) {
+          if (f.size > 10 * 1024 * 1024) { alert('Image trop lourde (max 10 Mo).'); return; }
+          const reader = new FileReader();
+          reader.onload = (ev) => { preview.innerHTML = `<img src="${ev.target.result}" class="w-full h-full object-cover" alt="" />`; };
+          reader.readAsDataURL(f);
+          status.classList.remove('hidden');
+          status.textContent = `${f.name} (${(f.size/1024).toFixed(0)} Ko)`;
+          status.className = 'text-[10px] mt-1 font-mono text-emerald-600';
+          onSelect(f);
+        }
+      }
+      bindImageDrop('adm-img-drop', 'adm-img-file', 'adm-img-preview', 'adm-upload-status', f => currentImageFile = f);
+      bindImageDrop('edit-img-drop', 'edit-img-file', 'edit-img-preview', 'edit-upload-status', f => currentEditImageFile = f);
+
+      function toggleImageUrlInput() {
+        const u = document.getElementById('adm-img-url');
+        u.classList.toggle('hidden');
+        if (!u.classList.contains('hidden')) u.focus();
+      }
+      async function uploadProductImage(file) {
+        return new Promise((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+              const MAX = 800;
+              let { width, height } = img;
+              if (width > height && width > MAX) { height = Math.round((height*MAX)/width); width = MAX; }
+              else if (height > MAX) { width = Math.round((width*MAX)/height); height = MAX; }
+              const canvas = document.createElement('canvas');
+              canvas.width = width; canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0,0,width,height);
+              ctx.drawImage(img, 0, 0, width, height);
+              let q = 0.72;
+              let url = canvas.toDataURL('image/jpeg', q);
+              while (url.length > 400*1024 && q > 0.3) { q -= 0.1; url = canvas.toDataURL('image/jpeg', q); }
+              resolve(url);
+            };
+            img.onerror = () => reject(new Error('Image illisible'));
+            img.src = e.target.result;
+          };
+          r.onerror = () => reject(new Error('Lecture impossible'));
+          r.readAsDataURL(file);
+        });
+      }
+
+      /* ===== ADD PRODUCT ===== */
+      async function handleAdminAddProduct(e) {
+        e.preventDefault();
+        const btn = document.getElementById('adm-submit');
+        const original = btn.innerHTML;
+        const urlInput = document.getElementById('adm-img-url').value.trim();
+        if (!currentImageFile && !urlInput) { alert('Ajoute une image.'); return; }
+        btn.disabled = true; btn.textContent = '⏳ …';
+        try {
+          let imageUrl = urlInput;
+          if (currentImageFile) {
+            const statusEl = document.getElementById('adm-upload-status');
+            statusEl.classList.remove('hidden');
+            statusEl.textContent = '⏳ Compression…';
+            imageUrl = await uploadProductImage(currentImageFile);
+            statusEl.textContent = 'Compressée';
+          }
+          const newProduct = {
+            name: document.getElementById('adm-name').value.trim(),
+            price_fcfa: Math.round(parseFloat(document.getElementById('adm-price').value)),
+            compare_fcfa: document.getElementById('adm-compare').value ? Math.round(parseFloat(document.getElementById('adm-compare').value)) : null,
+            category: document.getElementById('adm-cat').value,
+            stock: parseInt(document.getElementById('adm-stock').value || '0', 10),
+            material: document.getElementById('adm-material').value.trim(),
+            description: document.getElementById('adm-desc').value.trim(),
+            image: imageUrl,
+            video: document.getElementById('adm-video').value.trim() || null,
+            sizes: ['S','M','L','XL'],
+            colors: ['Noir','Blanc'],
+            created_at: new Date().toISOString()
+          };
+          let newId;
+          if (db) { const ref = await db.collection('products').add(newProduct); newId = ref.id; }
+          else newId = 'prod-' + Date.now();
+          newProduct.id = newId;
+          products.unshift(newProduct);
+          persistProductsLocal();
+          e.target.reset();
+          currentImageFile = null;
+          document.getElementById('adm-img-preview').innerHTML = 'Aperçu';
+          document.getElementById('adm-upload-status').classList.add('hidden');
+          renderDeleteList(); renderEditSelect(); renderCatalog();
+          showToast('Article publié');
+        } catch (err) { alert('Erreur : ' + err.message); }
+        finally { btn.disabled = false; btn.innerHTML = original; }
+      }
+
+      /* ===== DARK MODE ===== */
+      function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
+
+      /* ===== INSTRUCTIONS PAIEMENT ===== */
+      document.addEventListener('change', (e) => {
+        if (e.target.name !== 'pay') return;
+        const box = document.getElementById('pay-instructions');
+        const total = document.getElementById('checkout-total-fcfa')?.textContent || '';
+        const num = contacts.whatsapp || MERCHANT_PHONE_DISPLAY;
+        const txt = {
+          wave: `Envoyez <b>${total}</b> via <b>Wave</b> au <b>${num}</b>, puis indiquez votre numéro ci-dessus.`,
+          om:   `Envoyez <b>${total}</b> via <b>Orange Money</b> au <b>${num}</b> (#144# → Transfert).`,
+          free: `Envoyez <b>${total}</b> via <b>Free Money</b> au <b>${num}</b>.`,
+          cod:  `Vous paierez <b>${total}</b> en espèces à la livraison.`
+        }[e.target.value] || '';
+        box.innerHTML = txt;
+        box.classList.toggle('hidden', !txt);
+      });
+
+      /* ===== BOOT ===== */
+      (async function init() {
+        await loadProducts();
+        await loadContacts();
+        if (db) {
+          try {
+            const snap = await db.collection('reviews').get();
+            snap.docs.forEach(d => {
+              const r = { id: d.id, ...d.data() };
+              if (!reviewsByProduct[r.product_id]) reviewsByProduct[r.product_id] = [];
+              reviewsByProduct[r.product_id].push(r);
+            });
+          } catch(e) {}
+        }
+        updateCartBadge();
+        renderCatalog();
+        renderContacts();
+        renderPaymentNumber();
+      })();
+    </script>
+  </body>
+  </html>
